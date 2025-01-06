@@ -1,8 +1,8 @@
 # GitHub Issues Statistics
 
 ## Last 30 Days Summary
-- Total Issues: 5
-- Open Issues: 4
+- Total Issues: 6
+- Open Issues: 5
 - Closed Issues: 1
 - Average Time to Close: 0.3 hours
 
