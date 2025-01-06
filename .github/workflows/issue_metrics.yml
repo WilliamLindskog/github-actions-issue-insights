@@ -42,7 +42,7 @@ jobs:
           IGNORE_USERS: "user1,user2"
           DRAFT_PR_TRACKING: "true"
           ENABLE_MENTOR_COUNT: "true"
-          MIN_MENTOR_COMMENTS: "false"
+          MIN_MENTOR_COMMENTS: "0"
           HIDE_LABEL_COUNT: "false"
           LABELS_TO_MEASURE: "bug,documentation,feature request,part: misc framework,part: baselines,part: communication,part: flwr-dataset,part: examples,state: open,state: resolved,state: under review,state: revision needed,state: stale,good first issue,needs clarification,needs reproduction details"
           NON_MENTIONING_LINKS: "false"
