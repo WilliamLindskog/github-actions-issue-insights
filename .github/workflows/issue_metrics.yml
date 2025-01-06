@@ -31,7 +31,7 @@ jobs:
       - name: Run issue-metrics tool
         uses: github/issue-metrics@v3
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
           SEARCH_QUERY: "repo:WilliamLindskog/github-actions-issue-insights is:open is:issue"
           HIDE_AUTHOR: "true"
           HIDE_ITEMS_CLOSED_COUNT: "false"
@@ -46,7 +46,7 @@ jobs:
           HIDE_LABEL_COUNT: "false"
           LABELS_TO_MEASURE: "bug,documentation,feature request,part: misc framework,part: baselines,part: communication,part: flwr-dataset,part: examples,state: open,state: resolved,state: under review,state: revision needed,state: stale,good first issue,needs clarification,needs reproduction details"
           NON_MENTIONING_LINKS: "false"
-          OUTPUT_FILE: "./issue_metrics.md"
+          OUTPUT_FILE: "issue_metrics.md"
           REPORT_TITLE: "Flower Issue Metrics"
 
       - name: Run issue-metrics tool
