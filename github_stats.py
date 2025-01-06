@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 def analyze_issues(repo_name):
     """Analyze GitHub issues and generate statistics."""
-    g = Github(os.environ["GH_PAT"])
+    g = Github(os.environ["GITHUB_TOKEN"])
     repo = g.get_repo(repo_name)
     
     # Get all issues from the last 30 days
