@@ -61,3 +61,4 @@ jobs:
           title: Daily Issue Metrics Report
           token: ${{ secrets.GH_PAT }}
           content-filepath: ./daily_issue_metrics.md
+          assignees: WilliamLindskog
