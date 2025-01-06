@@ -32,7 +32,7 @@ jobs:
         uses: github/issue-metrics@v3
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-          SEARCH_QUERY: "repo:WilliamLindskog/github-actions-issue-insights is:open is:issue"
+          SEARCH_QUERY: "repo:WilliamLindskog/github-actions-issue-insights is:issue"
           HIDE_AUTHOR: "true"
           HIDE_ITEMS_CLOSED_COUNT: "false"
           HIDE_LABEL_METRICS: "false"
@@ -42,7 +42,7 @@ jobs:
           IGNORE_USERS: "user1,user2"
           DRAFT_PR_TRACKING: "true"
           ENABLE_MENTOR_COUNT: "true"
-          MIN_MENTOR_COMMENTS: "10"
+          MIN_MENTOR_COMMENTS: "false"
           HIDE_LABEL_COUNT: "false"
           LABELS_TO_MEASURE: "bug,documentation,feature request,part: misc framework,part: baselines,part: communication,part: flwr-dataset,part: examples,state: open,state: resolved,state: under review,state: revision needed,state: stale,good first issue,needs clarification,needs reproduction details"
           NON_MENTIONING_LINKS: "false"
