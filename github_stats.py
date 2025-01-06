@@ -8,11 +8,9 @@ def analyze_issues(repo_name):
     g = Github(os.environ["GITHUB_TOKEN"])
     repo = g.get_repo(repo_name)
     
-    # Get all issues from the last 30 days
     thirty_days_ago = datetime.now() - timedelta(days=30)
     issues = repo.get_issues(state='all', since=thirty_days_ago)
     
-    # Convert to DataFrame
     issues_data = []
     for issue in issues:
         issues_data.append({
@@ -26,17 +24,20 @@ def analyze_issues(repo_name):
     
     df = pd.DataFrame(issues_data)
     
-    # Calculate statistics
+    avg_time_to_close = 0
+    if not df.empty and 'closed_at' in df.columns:
+        closed_issues = df[df['closed_at'].notna()]
+        if not closed_issues.empty:
+            avg_time_to_close = (closed_issues['closed_at'] - closed_issues['created_at']).mean().total_seconds() / 3600
+    
     stats = {
         'total_issues': len(df),
-        'open_issues': len(df[df['state'] == 'open']),
-        'closed_issues': len(df[df['state'] == 'closed']),
-        'avg_time_to_close': (df[df['closed_at'].notna()]['closed_at'] - 
-                            df[df['closed_at'].notna()]['created_at']).mean().total_seconds() / 3600,
-        'most_common_labels': pd.Series([l for labels in df['labels'] for l in labels]).value_counts().head(5).to_dict()
+        'open_issues': len(df[df['state'] == 'open']) if not df.empty else 0,
+        'closed_issues': len(df[df['state'] == 'closed']) if not df.empty else 0,
+        'avg_time_to_close': avg_time_to_close,
+        'most_common_labels': pd.Series([l for labels in df['labels'] for l in labels]).value_counts().head(5).to_dict() if not df.empty else {}
     }
     
-    # Save results
     with open('github_stats.md', 'w') as f:
         f.write(f"# GitHub Issues Statistics\n\n")
         f.write(f"## Last 30 Days Summary\n")
