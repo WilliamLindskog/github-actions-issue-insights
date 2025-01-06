@@ -32,7 +32,7 @@ jobs:
         uses: github/issue-metrics@v3
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SEARCH_QUERY: "repo:adap/flower is:open is:issue"
+          SEARCH_QUERY: "repo:WilliamLindskog/github-actions-issue-insights is:open is:issue"
           HIDE_AUTHOR: "true"
           HIDE_ITEMS_CLOSED_COUNT: "false"
           HIDE_LABEL_METRICS: "false"
@@ -53,7 +53,7 @@ jobs:
         uses: github/issue-metrics@v3
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-          SEARCH_QUERY: 'repo:owner/repo is:issue created:${{ env.yesterday }} -reason:"not planned"'
+          SEARCH_QUERY: 'repo:WilliamLindskog/github-actions-issue-insights is:issue created:${{ env.yesterday }} -reason:"not planned"'
 
       - name: Create issue
         uses: peter-evans/create-issue-from-file@v5
