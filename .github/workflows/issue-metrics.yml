@@ -1,8 +1,8 @@
-name: Monthly issue metrics
+name: Daily Issue Metrics
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "3 2 1 * *"
+    - cron: '*/5 * * * *'  # Run every 5 minutes
+  workflow_dispatch:      # Allow manual trigger
 
 permissions:
   contents: read
@@ -15,28 +15,41 @@ jobs:
       issues: write
       pull-requests: read
     steps:
-      - name: Get dates for last month
+      - name: Get dates for yesterday and today
         shell: bash
         run: |
-          # Calculate the first day of the previous month
-          first_day=$(date -d "last month" +%Y-%m-01)
+          # Calculate yesterday's date
+          yesterday=$(date -d "yesterday" +%Y-%m-%d)
 
-          # Calculate the last day of the previous month
-          last_day=$(date -d "$first_day +1 month -1 day" +%Y-%m-%d)
+          # Calculate today's date
+          today=$(date +%Y-%m-%d)
 
-          #Set an environment variable with the date range
-          echo "$first_day..$last_day"
-          echo "last_month=$first_day..$last_day" >> "$GITHUB_ENV"
+          # Set an environment variable with the date range
+          echo "$yesterday..$today"
+          echo "yesterday=$yesterday" >> "$GITHUB_ENV"
 
       - name: Run issue-metrics tool
         uses: github/issue-metrics@v3
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-          SEARCH_QUERY: 'repo:WilliamLindskog/github-actions-issue-insights is:issue created:${{ env.last_month }} -reason:"not planned"'
-
+          SEARCH_QUERY: "repo:WilliamLindskog/github-actions-issue-insights is:issue"
+          HIDE_AUTHOR: "true"
+          HIDE_ITEMS_CLOSED_COUNT: "false"
+          HIDE_LABEL_METRICS: "false"
+          HIDE_TIME_TO_ANSWER: "false"
+          HIDE_TIME_TO_CLOSE: "false"
+          HIDE_TIME_TO_FIRST_RESPONSE: "false"
+          IGNORE_USERS: "user1,user2"
+          DRAFT_PR_TRACKING: "true"
+          ENABLE_MENTOR_COUNT: "true"
+          MIN_MENTOR_COMMENTS: "0"
+          HIDE_LABEL_COUNT: "false"
+          LABELS_TO_MEASURE: "bug,documentation,feature request,part: misc framework,part: baselines,part: communication,part: flwr-dataset,part: examples,state: open,state: resolved,state: under review,state: revision needed,state: stale,good first issue,needs clarification,needs reproduction details"
+          NON_MENTIONING_LINKS: "false"
+          REPORT_TITLE: "Flower Issue Metrics"
+          
       - name: Create issue
         uses: peter-evans/create-issue-from-file@v5
         with:
-          title: Monthly issue metrics report
+          title: Daily Issue Metrics Report
           token: ${{ secrets.GH_PAT }}
-          content-filepath: ./issue_metrics.md
+          content-filepath: ./daily_issue_metrics.md
