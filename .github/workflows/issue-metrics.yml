@@ -1,7 +1,7 @@
 name: Real Daily Issue Metrics
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Run every 5 minutes
+    - cron: '0 0 1 * *'  # Run at midnight on the first day of every month
   workflow_dispatch:      # Allow manual trigger
 
 permissions:
