@@ -16,3 +16,4 @@ jobs:
         with:
           repo_token: ${{ secrets.GH_PAT }}
           assignees: WilliamLindskog
+          configuration-path: .github/workflows/auto-assign.yml
