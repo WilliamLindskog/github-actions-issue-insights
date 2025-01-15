@@ -14,5 +14,5 @@ jobs:
             contains(github.event.issue.labels.*.name, 'feature request')
         uses: actions-ecosystem/action-add-labels@v1.2.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           assignees: WilliamLindskog
