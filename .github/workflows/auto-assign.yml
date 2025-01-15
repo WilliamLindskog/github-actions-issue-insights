@@ -12,7 +12,7 @@ jobs:
         if: contains(github.event.issue.labels.*.name, 'bug') || 
             contains(github.event.issue.labels.*.name, 'documentation') || 
             contains(github.event.issue.labels.*.name, 'feature request')
-        uses: actions-ecosystem/action-add-labels@v1.2.1
+        uses: kentaro-m/auto-assign-action@v2.0.0
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          repo_token: ${{ secrets.GH_PAT }}
           assignees: WilliamLindskog
