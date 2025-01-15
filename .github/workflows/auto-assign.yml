@@ -15,4 +15,4 @@ jobs:
               with:
                   assignees: WilliamLindskog
                   numOfAssignee: 1
-                  allowSelfAssign: false
+                  allowSelfAssign: True
