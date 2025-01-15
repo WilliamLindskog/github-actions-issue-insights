@@ -12,7 +12,7 @@ jobs:
         if: contains(github.event.issue.labels.*.name, 'bug') || 
             contains(github.event.issue.labels.*.name, 'documentation') || 
             contains(github.event.issue.labels.*.name, 'feature request')
-        uses: kentaro-m/auto-assign-action@v1.2.0
+        uses: actions-ecosystem/action-add-labels@v1.2.1
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: .github/workflows/auto_assign.yml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: WilliamLindskog
