@@ -15,7 +15,7 @@ jobs:
         uses: actions/stale@v8
         with:
           repo-token: ${{ secrets.GH_PAT}}
-          days-before-stale: 21 # 3 weeks
+          days-before-stale: 5 # 3 weeks
           stale-issue-label: "stale"
           stale-pr-label: "stale"
           
