@@ -8,6 +8,6 @@
 
 ## Most Common Labels
 - bug: 10
-- stale: 3
+- stale: 9
 - documentation: 1
 - good first issue: 1
