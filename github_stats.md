@@ -2,9 +2,9 @@
 
 ## Last 30 Days Summary
 - Total Issues: 13
-- Open Issues: 9
-- Closed Issues: 4
-- Average Time to Close: 0.1 hours
+- Open Issues: 6
+- Closed Issues: 7
+- Average Time to Close: 187.2 hours
 
 ## Most Common Labels
 - bug: 10
