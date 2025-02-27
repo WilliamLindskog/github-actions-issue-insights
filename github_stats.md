@@ -1,11 +1,9 @@
 # GitHub Issues Statistics
 
 ## Last 30 Days Summary
-- Total Issues: 6
+- Total Issues: 0
 - Open Issues: 0
-- Closed Issues: 6
-- Average Time to Close: 296.3 hours
+- Closed Issues: 0
+- Average Time to Close: 0.0 hours
 
 ## Most Common Labels
-- bug: 6
-- stale: 6
